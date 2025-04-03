@@ -1,23 +1,13 @@
-import { Star } from "lucide-react";
 
-export default function CategoryItem() {
+interface GameItemProps {
+    game: Game
+}
+
+export default function GameItem({game}: GameItemProps) {
     return (
-        <div className="mt-4">
-            <table className="w-full text-left border-collapse">
-                <tbody>
-                    {Array(4).fill(0).map((_, index) => (
-                        <tr key={index} className="border-t">
-                            <td className="px-4 py-2 flex items-center gap-2">
-                                <Star /> God of War
-                            </td>
-                            <td className="px-4 py-2">Ação</td>
-                            <td className="px-4 py-2">PC/Console</td>
-                            <td className="px-4 py-2">Zerado</td>
-                            <td className="px-4 py-2 text-center">...</td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
+        <div className="flex justify-between mt-2">
+            <div className="flex gap-2"></div>
+                <Game name={game.game} />
         </div>
     );
 }
