@@ -1,11 +1,12 @@
+import { getGames } from "@/actions/games-actions";
 import GameItem from "@/components/game-item";
 import NavBar from "@/components/nav-bar"
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 import Link from "next/link";
 
-export default function GamesPage() {
-    const data: Game[] = await getGames()
+export default async function GamesPage() {
+    const data: Games[] = await getGames()
 
     return (
         <>
@@ -16,14 +17,11 @@ export default function GamesPage() {
                     <div className="flex justify-between">
                         <ul className="flex justify-around">
                             <li className="font-bold">Games</li>
-                            <li className="font-bold">Gênero</li>
-                            <li className="font-bold">Plataforma</li>
-                            <li className="font-bold">Status</li>
                         </ul>
-                        <Button asChild>
+                        <Button asChild className="bg-violet-950">
                             <Link href="/games/form">
                                 <Plus />
-                                novo jogo
+                                Novo jogo
                             </Link>
                         </Button>
 

@@ -2,18 +2,16 @@ import { redirect } from "next/navigation"
 
 const API_URL = "http://localhost:8080/games"
 
-export async function getCategories() {
+export async function getGames() {
     const response = await fetch(API_URL)
     return await response.json()
 }
 
 
-export async function createCategory(initialState: any, formData: FormData){
+export async function createGame(initialState: any, formData: FormData){
     const data = {
-        name: formData.get("game"),
+        game: formData.get("game"),
         genero: formData.get("genero"),
-        plataforma: formData.get("plataforma"),
-        status: formData.get("status")
     }
 
     const options = {
@@ -31,16 +29,12 @@ export async function createCategory(initialState: any, formData: FormData){
 
         return {
             values: {
-                name: formData.get("game"),
+                game: formData.get("game"),
                 genero: formData.get("genero"),
-                plataforma: formData.get("plataforma"),
-                status: formData.get("status")
             },
             errors:{
-                name: errors.find( error => error.field === "name")?.message,
+                game: errors.find( error => error.field === "game")?.message,
                 genero: errors.find( error => error.field === "genero")?.message,
-                plataforma: errors.find( error => error.field === "plataforma")?.message,
-                status: errors.find( error => error.field === "status")?.message
             }
         }
     }
